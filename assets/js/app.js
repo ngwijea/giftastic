@@ -11,16 +11,29 @@
         url: queryURL,
         method: "GET"
       }).done(function(response) {
+        console.log(response)
 
-        // Creates a div to hold the hero
-        var heroDiv = $("<div class='hero'>");
-        // Retrieves the Rating Data
-        var rating = response.data[0].rating;
-        // Creates an element to have the rating displayed
-         var pOne = $("<p>").text("Rating: " + rating);
-        // Displays the rating
-        heroDiv.append(pOne);
-        $("#heroes-view").prepend(heroDiv);
+      var results = response.data
+
+      for (var i = 0; i < results.length; i++) {
+
+               // Creates a div to hold the hero
+               var heroDiv = $("<div class='hero'>");
+               // Retrieves the Rating Data
+               var rating = response.data[i].rating;
+               // Creates an element to have the rating displayed
+               var pOne = $("<p>").text("Rating: " + rating);
+               // Displays the rating
+               heroDiv.append(pOne);
+              // Creates an element to hold the Gifs
+              var gifs = $("<img>");
+               // Get the Gif URLs
+               gifs.attr("src",results[i].images.preview_webp.url);
+               // Show Gifs
+               heroDiv.append(gifs)
+               $("#heroes-view").prepend(heroDiv);
+}
+        
       });
 
     }
@@ -57,7 +70,7 @@ $("#buttons-view").empty();
     // This line will grab the text from the input box
     var hero = $("#hero-input").val().trim();
     // The hero from the textbox is then added to our array
-    heroes.push(hero);
+    heroesList.push(hero);
 
     // calling renderButtons which handles the processing of our heroes array
     renderButtons();
