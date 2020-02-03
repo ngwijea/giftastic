@@ -1,4 +1,4 @@
-   var heroesList = ["Hulk","Iron Man","Black Widow","Captain Marvel"]
+   var topics = ["Hulk","Iron Man","Black Widow","Captain Marvel"]
    
    function displayHeroInfo() {
 
@@ -45,7 +45,7 @@ function renderButtons() {
 $("#buttons-view").empty();
 
         // Looping through the array of heroes
-        for (var i = 0; i < heroesList.length; i++) {
+        for (var i = 0; i < topics.length; i++) {
 
           // Then dynamicaly generating buttons for each hero in the array.
           // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
@@ -53,9 +53,9 @@ $("#buttons-view").empty();
           // Adding a class
           a.addClass("hero");
           // Adding a data-attribute with a value of the hero at index i
-          a.attr("data-name", heroesList[i]);
+          a.attr("data-name", topics[i]);
           // Providing the button's text with a value of the hero at index i
-          a.text(heroesList[i]);
+          a.text(topics[i]);
           // Adding the button to the HTML
           $("#buttons-view").append(a);
         }
@@ -70,7 +70,7 @@ $("#buttons-view").empty();
     // This line will grab the text from the input box
     var hero = $("#hero-input").val().trim();
     // The hero from the textbox is then added to our array
-    heroesList.push(hero);
+    topics.push(hero);
 
     // calling renderButtons which handles the processing of our heroes array
     renderButtons();
