@@ -15,6 +15,8 @@
 
       var results = response.data
 
+      $("#heroes-view").empty();
+
       for (var i = 0; i < results.length; i++) {
 
                // Creates a div to hold the hero
@@ -28,9 +30,14 @@
               // Creates an element to hold the Gifs
               var gifs = $("<img>");
                // Get the Gif URLs
-               gifs.attr("src",results[i].images.preview_webp.url);
+               gifs.attr("src",results[i].images.downsized_large.url);
+              // Creates an element to hold the static Gifs
+              var gifStill = $("<img>");
+              //  Get the static Gif URLs
+              gifStill.attr("src",results[i].images.downsized_still.url);
                // Show Gifs
                heroDiv.append(gifs)
+               
                $("#heroes-view").prepend(heroDiv);
 }
         
